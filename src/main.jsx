@@ -4,15 +4,21 @@ import { createBrowserRouter, RouterProvider } from 'react-router'
 import './index.css'
 import App from './App.jsx'
 import Profile from './components/Profile.jsx'
+import Popeye from './components/Popeye.jsx'
+import Spinach from './components/Spinach.jsx'
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <App />
+    element: <App />,
   },
   {
     path: 'profile',
-    element: <Profile />
+    element: <Profile />,
+    children: [
+      { path: "popeye", element: <Popeye /> },
+      { path: "spinach", element: <Spinach /> },
+    ]
   }
 ])
 
