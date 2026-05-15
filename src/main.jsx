@@ -6,20 +6,19 @@ import App from './App.jsx'
 import Profile from './components/Profile.jsx'
 import Popeye from './components/Popeye.jsx'
 import Spinach from './components/Spinach.jsx'
+import DefaultProfile from './components/DefaultProfile.jsx'
+import ErrorPage from './components/ErrorPage.jsx'
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
+    errorElement: <ErrorPage />
   },
   {
-    path: 'profile',
+    path: 'profile/:name',
     element: <Profile />,
-    children: [
-      { path: "popeye", element: <Popeye /> },
-      { path: "spinach", element: <Spinach /> },
-    ]
-  }
+  },
 ])
 
 createRoot(document.getElementById('root')).render(
