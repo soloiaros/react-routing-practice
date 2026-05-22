@@ -1,15 +1,19 @@
-import App from "./App";
-import Profile from "./components/Profile";
-import ErrorPage from "./components/ErrorPage";
+import Root from './routes/root';
+import ErrorPage from './error-page';
+import Contact from './routes/contacts';
 
-export default routes = [
-  {
-    path: '/',
-    element: <App />,
-    errorElement: <ErrorPage />
-  },
-  {
-    path: 'profile/:name',
-    element: <Profile />,
-  },
-];
+const routes = [
+    {
+        path: '/',
+        element: <Root />,
+        errorElement: <ErrorPage />,
+        children: [
+            {
+                path: 'contacts/:contactId',
+                element: <Contact />,
+            },
+        ],
+    },
+]
+
+export default routes;
