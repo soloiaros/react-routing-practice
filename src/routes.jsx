@@ -1,16 +1,19 @@
-import Root from './routes/root';
+import Root, { loader as rootLoader, action as rootAction } from './routes/root';
 import ErrorPage from './error-page';
-import Contact from './routes/contacts';
+import Contact, { loader as contactLoader } from './routes/contact';
 
 const routes = [
     {
         path: '/',
         element: <Root />,
         errorElement: <ErrorPage />,
+        loader: rootLoader,
+        action: rootAction,
         children: [
             {
                 path: 'contacts/:contactId',
                 element: <Contact />,
+                loader: contactLoader,
             },
         ],
     },
