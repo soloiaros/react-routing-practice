@@ -1,29 +1,31 @@
-import Root, { loader as rootLoader, action as rootAction } from './routes/root';
+import Root from './routes/root';
+import Contact from './routes/contact';
+import EditContact from './routes/edit';
 import ErrorPage from './error-page';
-import Contact, { loader as contactLoader } from './routes/contact';
-import EditContact, { loader as editContactLoader, action as editAction } from './routes/edit'
+import { rootLoader, contactLoader, editLoader } from './loaders';
+import { rootAction, editAction } from './actions';
 
 const routes = [
-    {
-        path: '/',
-        element: <Root />,
-        errorElement: <ErrorPage />,
-        loader: rootLoader,
-        action: rootAction,
-        children: [
-            {
-                path: 'contacts/:contactId',
-                element: <Contact />,
-                loader: contactLoader,
-            },
-            {
-                path: 'contacts/:contactId/edit',
-                element: <EditContact />,
-                loader: editContactLoader,
-                action: editAction,
-            },
-        ],
-    },
-]
+  {
+    path: '/',
+    element: <Root />,
+    errorElement: <ErrorPage />,
+    loader: rootLoader,
+    action: rootAction,
+    children: [
+      {
+        path: 'contacts/:contactId',
+        element: <Contact />,
+        loader: contactLoader,
+      },
+      {
+        path: 'contacts/:contactId/edit',
+        element: <EditContact />,
+        loader: editLoader,
+        action: editAction,
+      },
+    ],
+  },
+];
 
 export default routes;

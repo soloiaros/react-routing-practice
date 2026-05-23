@@ -1,15 +1,4 @@
-import { Outlet, Link, useLoaderData, Form, redirect, NavLink } from "react-router-dom";
-import { getContacts, createContact } from "../contacts";
-
-export async function loader() {
-  const contacts = await getContacts();
-  return { contacts };
-}
-
-export async function action() {
-  const contact = await createContact();
-  return redirect(`/contacts/${contact.id}/edit`);
-}
+import { Outlet, useLoaderData, Form, NavLink } from 'react-router-dom';
 
 export default function Root() {
   const { contacts } = useLoaderData();
@@ -27,15 +16,8 @@ export default function Root() {
               type="search"
               name="q"
             />
-            <div
-              id="search-spinner"
-              aria-hidden
-              hidden={true}
-            />
-            <div
-              className="sr-only"
-              aria-live="polite"
-            ></div>
+            <div id="search-spinner" aria-hidden hidden={true} />
+            <div className="sr-only" aria-live="polite"></div>
           </form>
           <Form method="post">
             <button type="submit">New</button>
@@ -46,21 +28,19 @@ export default function Root() {
             <ul>
               {contacts.map((contact) => (
                 <li key={contact.id}>
-                  <NavLink to={`contacts/${contact.id}`} className={({ isActive, isPending }) => (
-                    isActive 
-                      ? "active"
-                      : isPending
-                      ? "pending"
-                      : ""
-                  )}>
+                  <NavLink
+                    to={`contacts/${contact.id}`}
+                    className={({ isActive, isPending }) =>
+                      isActive ? 'active' : isPending ? 'pending' : ''
+                    }
+                  >
                     {contact.firts || contact.last ? (
                       <>
                         {contact.first} {contact.last}
                       </>
                     ) : (
                       <i>No Name</i>
-                    )}
-                    {' '}
+                    )}{' '}
                     {contact.favorite && <span>★</span>}
                   </NavLink>
                 </li>
