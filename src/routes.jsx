@@ -3,7 +3,7 @@ import Contact from './routes/contact';
 import EditContact from './routes/edit';
 import ErrorPage from './error-page';
 import { rootLoader, contactLoader, editLoader } from './loaders';
-import { rootAction, editAction } from './actions';
+import { rootAction, editAction, destroyAction } from './actions';
 
 const routes = [
   {
@@ -23,6 +23,10 @@ const routes = [
         element: <EditContact />,
         loader: editLoader,
         action: editAction,
+      },
+      {
+        path: 'contacts/:contactId/destroy',
+        action: destroyAction,
       },
     ],
   },
