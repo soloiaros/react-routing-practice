@@ -27,6 +27,7 @@ const routes = [
       {
         path: 'contacts/:contactId/destroy',
         action: destroyAction,
+        errorElement: <div>Oops! We couldn't delete the user for some reason.</div>
       },
     ],
   },

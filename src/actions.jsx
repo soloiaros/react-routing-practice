@@ -14,6 +14,8 @@ export async function editAction({ request, params }) {
 }
 
 export async function destroyAction({ params }) {
+  throw new Error('oh dang!');
+  // eslint-disable-next-line
   await deleteContact(params.contactId);
   return redirect(`/`);
 }
