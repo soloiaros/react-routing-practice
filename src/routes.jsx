@@ -2,6 +2,7 @@ import Root from './routes/root';
 import Contact from './routes/contact';
 import EditContact from './routes/edit';
 import ErrorPage from './error-page';
+import Index from './routes/index';
 import { rootLoader, contactLoader, editLoader } from './loaders';
 import { rootAction, editAction, destroyAction } from './actions';
 
@@ -13,6 +14,10 @@ const routes = [
     loader: rootLoader,
     action: rootAction,
     children: [
+      {
+        index: true,
+        element: <Index />
+      },
       {
         path: 'contacts/:contactId',
         element: <Contact />,
