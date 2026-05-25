@@ -4,7 +4,7 @@ import EditContact from './routes/edit';
 import ErrorPage from './error-page';
 import Index from './routes/index';
 import { rootLoader, contactLoader, editLoader } from './loaders';
-import { rootAction, editAction, destroyAction } from './actions';
+import { rootAction, editAction, destroyAction, favoriteAction } from './actions';
 
 const routes = [
   {
@@ -22,6 +22,7 @@ const routes = [
         path: 'contacts/:contactId',
         element: <Contact />,
         loader: contactLoader,
+        action: favoriteAction,
       },
       {
         path: 'contacts/:contactId/edit',
