@@ -15,25 +15,30 @@ const routes = [
     action: rootAction,
     children: [
       {
-        index: true,
-        element: <Index />
-      },
-      {
-        path: 'contacts/:contactId',
-        element: <Contact />,
-        loader: contactLoader,
-        action: favoriteAction,
-      },
-      {
-        path: 'contacts/:contactId/edit',
-        element: <EditContact />,
-        loader: editLoader,
-        action: editAction,
-      },
-      {
-        path: 'contacts/:contactId/destroy',
-        action: destroyAction,
-        errorElement: <div>Oops! We couldn't delete the user for some reason.</div>
+        errorElement: <ErrorPage />,
+        children: [
+          {
+            index: true,
+            element: <Index />
+          },
+          {
+            path: 'contacts/:contactId',
+            element: <Contact />,
+            loader: contactLoader,
+            action: favoriteAction,
+          },
+          {
+            path: 'contacts/:contactId/edit',
+            element: <EditContact />,
+            loader: editLoader,
+            action: editAction,
+          },
+          {
+            path: 'contacts/:contactId/destroy',
+            action: destroyAction,
+            errorElement: <div>Oops! We couldn't delete the user for some reason.</div>
+          },
+        ]
       },
     ],
   },
